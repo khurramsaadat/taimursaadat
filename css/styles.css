@@ -843,6 +843,15 @@ footer {
         width: 100vw !important;
         height: 100vh !important;
         background: var(--primary-color) !important;
+        /* Add subtle pattern background */
+        background-image: 
+            linear-gradient(135deg, rgba(74, 111, 255, 0.05) 25%, transparent 25%),
+            linear-gradient(225deg, rgba(74, 111, 255, 0.05) 25%, transparent 25%),
+            linear-gradient(45deg, rgba(74, 111, 255, 0.05) 25%, transparent 25%),
+            linear-gradient(315deg, rgba(74, 111, 255, 0.05) 25%, var(--primary-color) 25%) !important;
+        background-position: 10px 0, 10px 0, 0 0, 0 0 !important;
+        background-size: 20px 20px !important;
+        background-repeat: repeat !important;
         backdrop-filter: blur(10px) !important;
         -webkit-backdrop-filter: blur(10px) !important;
         transform: translateX(-100%);
@@ -915,6 +924,7 @@ footer {
     .logo {
         font-size: 1.1rem;
         order: 2;                     /* Move logo to the right */
+        margin-right: 2rem;           /* Add right margin to move logo left and make it fully visible */
     }
 
     .burger-menu {
@@ -1210,7 +1220,7 @@ h2 {
     .nav-links .theme-toggle {
         position: fixed !important;
         top: 1.5rem;
-        right: 1.5rem;
+        right: 7rem; /* Moved left from 1.5rem to 3rem for better visibility */
         z-index: 1003;
         width: 50px;
         height: 50px;
