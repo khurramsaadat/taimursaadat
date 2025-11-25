@@ -18,6 +18,7 @@
     --gradient: linear-gradient(135deg, #4A6FFF, #8A2BE2);
     --navbar-bg: #ffffff;
     --navbar-text: #333333;
+    --mobile-menu-text: #2c3e50;
     --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --border-color: #e0e0e0;
     --hover-bg: #f5f5f5;
@@ -43,6 +44,7 @@
     --gradient: linear-gradient(135deg, #4A6FFF, #8A2BE2);
     --navbar-bg: #ffffff;
     --navbar-text: #333333;
+    --mobile-menu-text: #2c3e50;
     --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     --border-color: #e0e0e0;
     --hover-bg: #f5f5f5;
@@ -68,6 +70,7 @@
     --gradient: linear-gradient(135deg, #4A6FFF, #8A2BE2);
     --navbar-bg: #000000;
     --navbar-text: #FFFFFF;
+    --mobile-menu-text: #FFFFFF;
     --navbar-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
     --border-color: #333333;
     --hover-bg: #1a1a1a;
@@ -861,7 +864,7 @@ footer {
         margin: 0.5rem 0;
         font-size: 1.2rem;
         font-weight: 500;
-        color: var(--navbar-text);
+        color: var(--mobile-menu-text);
         text-decoration: none;
         border-radius: 10px;
         transition: all 0.3s ease;
@@ -1239,6 +1242,7 @@ h2 {
         padding: 1rem 2rem;
         font-size: 1rem;
         opacity: 0.9;
+        color: var(--mobile-menu-text) !important;
     }
 
     @keyframes fadeInDown {
@@ -1571,6 +1575,14 @@ h2 {
     text-decoration: none;
     display: block;
     transition: background-color 0.3s ease;
+}
+
+/* Mobile dropdown content styles */
+@media (max-width: 768px) {
+    .dropdown-content a {
+        color: var(--mobile-menu-text) !important;
+        background: transparent;
+    }
 }
 
 .dropdown-content a:hover {
