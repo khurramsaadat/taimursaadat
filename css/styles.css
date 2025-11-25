@@ -26,7 +26,9 @@
     --sidebar-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     --sidebar-text: #495057;
     --sidebar-border: rgba(0, 0, 0, 0.1);
-    --section-separator: #f0f2f5;
+    --section-separator: #e8ecf0;
+    --section-primary: #ffffff;
+    --section-secondary: #f8f9fa;
 }
 
 /* Day Theme Class */
@@ -49,7 +51,9 @@
     --sidebar-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
     --sidebar-text: #495057;
     --sidebar-border: rgba(0, 0, 0, 0.1);
-    --section-separator: #f0f2f5;
+    --section-separator: #e8ecf0;
+    --section-primary: #ffffff;
+    --section-secondary: #f8f9fa;
 }
 
 /* Night Theme Class */
@@ -73,6 +77,8 @@
     --sidebar-text: #b8c5d6;
     --sidebar-border: rgba(74, 158, 255, 0.2);
     --section-separator: #1a1a2e;
+    --section-primary: #000000;
+    --section-secondary: #0F0F17;
 }
 
 /* Night Theme (Legacy support) */
@@ -219,13 +225,21 @@ body {
 }
 
 /* Section Separators */
-.section-separator {
-    background-color: var(--section-separator);
+/* Section Background Classes */
+.section-primary {
+    background-color: var(--section-primary);
     padding: 4rem 0;
 }
 
-.section-separator:nth-of-type(even) {
-    background-color: var(--primary-color);
+.section-secondary {
+    background-color: var(--section-secondary);
+    padding: 4rem 0;
+}
+
+/* Legacy section-separator class for backward compatibility */
+.section-separator {
+    background-color: var(--section-separator);
+    padding: 4rem 0;
 }
 
 /* Buttons */
@@ -454,7 +468,14 @@ body {
 /* Features Section */
 .features {
     padding: 6rem 0;
-    background: var(--primary-color);
+}
+
+.features.section-secondary {
+    background: var(--section-secondary);
+}
+
+.features.section-primary {
+    background: var(--section-primary);
 }
 
 .features-grid {
@@ -492,7 +513,14 @@ body {
 /* Market Trends Section */
 .market-trends {
     padding: 6rem 0;
-    background: var(--dark-bg);
+}
+
+.market-trends.section-secondary {
+    background: var(--section-secondary);
+}
+
+.market-trends.section-primary {
+    background: var(--section-primary);
 }
 
 .trends-grid {
@@ -529,7 +557,14 @@ body {
 /* Testimonials Section */
 .testimonials {
     padding: 6rem 0;
-    background: var(--primary-color);
+}
+
+.testimonials.section-secondary {
+    background: var(--section-secondary);
+}
+
+.testimonials.section-primary {
+    background: var(--section-primary);
 }
 
 .testimonials-grid {
@@ -631,7 +666,14 @@ body {
 /* Contact Section */
 .contact {
     padding: 6rem 0;
-    background: var(--dark-bg);
+}
+
+.contact.section-secondary {
+    background: var(--section-secondary);
+}
+
+.contact.section-primary {
+    background: var(--section-primary);
 }
 
 .contact-grid {
@@ -962,7 +1004,14 @@ footer {
 /* About Me Section */
 .about-me {
     padding: 6rem 0;
-    background: var(--dark-bg);
+}
+
+.about-me.section-secondary {
+    background: var(--section-secondary);
+}
+
+.about-me.section-primary {
+    background: var(--section-primary);
 }
 
 .about-grid {
@@ -2364,7 +2413,14 @@ h2 {
 /* Advanced Chart Section */
 .advanced-chart-section {
     padding: 4rem 0;
-    background: var(--dark-bg);
+}
+
+.advanced-chart-section.section-secondary {
+    background: var(--section-secondary);
+}
+
+.advanced-chart-section.section-primary {
+    background: var(--section-primary);
 }
 
 .advanced-chart-section .container {
@@ -2382,7 +2438,14 @@ h2 {
 /* Market Overview Section */
 .market-overview-section {
     padding: 4rem 0;
-    background: var(--dark-bg);
+}
+
+.market-overview-section.section-secondary {
+    background: var(--section-secondary);
+}
+
+.market-overview-section.section-primary {
+    background: var(--section-primary);
 }
 
 .market-overview-section .container {
