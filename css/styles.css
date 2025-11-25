@@ -203,7 +203,7 @@ body {
 /* Theme Toggle Button */
 .theme-toggle {
     background: none;
-    border: 2px solid var(--secondary-color);
+    border: none; /* Removed blue circle border */
     border-radius: 50%;
     width: 40px;
     height: 40px;
@@ -218,8 +218,8 @@ body {
 }
 
 .theme-toggle:hover {
-    background-color: var(--secondary-color);
-    color: white;
+    background-color: transparent; /* Removed blue background on hover */
+    color: var(--secondary-color); /* Change icon color on hover */
     transform: scale(1.1);
 }
 
