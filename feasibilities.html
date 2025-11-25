@@ -24,20 +24,22 @@
 
         .feasibility-sidebar {
             width: 400px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: var(--sidebar-bg);
             padding: 2rem;
-            box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 2px 0 10px var(--sidebar-border);
             position: fixed;
             height: calc(100vh - 80px);
             overflow-y: auto;
+            transition: all 0.3s ease;
         }
 
         .feasibility-main {
             flex: 1;
             margin-left: 420px;
-            background: #0f0f23;
+            background: var(--dark-bg);
             min-height: calc(100vh - 80px);
             padding-left: 1rem;
+            transition: all 0.3s ease;
         }
 
         /* Sidebar Header */
@@ -46,14 +48,14 @@
         }
 
         .sidebar-header h1 {
-            color: #4a9eff;
+            color: var(--secondary-color);
             font-size: 2rem;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
         .sidebar-header p {
-            color: #b8c5d6;
+            color: var(--sidebar-text);
             line-height: 1.6;
             font-size: 0.95rem;
         }
@@ -72,14 +74,14 @@
 
         /* Studies List */
         .studies-section h2 {
-            color: #4a9eff;
+            color: var(--secondary-color);
             font-size: 1.3rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
 
         .studies-section p {
-            color: #b8c5d6;
+            color: var(--sidebar-text);
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
         }
@@ -88,18 +90,18 @@
         .about-feasibility {
             margin-top: 2rem;
             padding-top: 2rem;
-            border-top: 1px solid rgba(74, 158, 255, 0.2);
+            border-top: 1px solid var(--sidebar-border);
         }
 
         .about-feasibility h3 {
-            color: #4a9eff;
+            color: var(--secondary-color);
             font-size: 1.2rem;
             margin-bottom: 1rem;
             font-weight: 600;
         }
 
         .about-feasibility p {
-            color: #b8c5d6;
+            color: var(--sidebar-text);
             line-height: 1.6;
             font-size: 0.9rem;
             margin-bottom: 1.5rem;
@@ -113,7 +115,7 @@
 
         .study-item {
             background: rgba(74, 158, 255, 0.1);
-            border: 1px solid rgba(74, 158, 255, 0.2);
+            border: 1px solid var(--sidebar-border);
             border-radius: 8px;
             margin-bottom: 0.75rem;
             cursor: pointer;
@@ -132,19 +134,19 @@
 
         .study-item.active {
             background: rgba(74, 158, 255, 0.3);
-            border-color: #4a9eff;
+            border-color: var(--secondary-color);
             box-shadow: 0 4px 15px rgba(74, 158, 255, 0.2);
         }
 
         .study-item i {
-            color: #4a9eff;
+            color: var(--secondary-color);
             font-size: 1.1rem;
             width: 20px;
             text-align: center;
         }
 
         .study-item span {
-            color: #ffffff;
+            color: var(--text-color);
             font-weight: 500;
             font-size: 0.95rem;
         }
@@ -157,7 +159,7 @@
 
         .pdf-header {
             background: rgba(74, 158, 255, 0.1);
-            border: 1px solid rgba(74, 158, 255, 0.2);
+            border: 1px solid var(--sidebar-border);
             border-radius: 12px 12px 0 0;
             padding: 1.5rem;
             display: flex;
@@ -166,7 +168,7 @@
         }
 
         .pdf-header h3 {
-            color: #4a9eff;
+            color: var(--secondary-color);
             margin: 0;
             font-size: 1.4rem;
             font-weight: 600;
@@ -194,7 +196,7 @@
         .pdf-frame {
             width: 100%;
             height: calc(100vh - 200px);
-            border: 1px solid rgba(74, 158, 255, 0.2);
+            border: 1px solid var(--sidebar-border);
             border-top: none;
             border-radius: 0 0 12px 12px;
             background: white;
@@ -206,13 +208,13 @@
             align-items: center;
             justify-content: center;
             height: calc(100vh - 150px);
-            color: #b8c5d6;
+            color: var(--sidebar-text);
             text-align: center;
         }
 
         .initial-message i {
             font-size: 4rem;
-            color: #4a9eff;
+            color: var(--secondary-color);
             margin-bottom: 1rem;
             opacity: 0.7;
         }
@@ -263,7 +265,8 @@
             <a href="index.html" class="logo">
                 <img src="assets/images/Logo_taimur.png" alt="Taimur Saadat Finance" class="logo-img">
             </a>
-            <div class="nav-links">                
+            <div class="nav-links">
+                <a href="index.html">Home</a>
                 <div class="dropdown">
                     <a href="#" class="dropdown-trigger">Courses <i class="fas fa-chevron-down"></i></a>
                     <div class="dropdown-content">
@@ -358,6 +361,7 @@
     </div>
 
 
+    <script src="js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Define the studies object

@@ -1,3 +1,73 @@
+// Theme Management
+class ThemeManager {
+    constructor() {
+        this.theme = localStorage.getItem('theme') || 'light';
+        this.init();
+    }
+
+    init() {
+        // Apply saved theme or default to light
+        this.applyTheme(this.theme);
+        
+        // Create theme toggle button
+        this.createThemeToggle();
+        
+        // Listen for system theme changes
+        if (window.matchMedia) {
+            window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+                if (!localStorage.getItem('theme')) {
+                    this.applyTheme(e.matches ? 'dark' : 'light');
+                }
+            });
+        }
+    }
+
+    createThemeToggle() {
+        const navbar = document.querySelector('.nav-links');
+        if (navbar) {
+            const themeToggle = document.createElement('button');
+            themeToggle.className = 'theme-toggle';
+            themeToggle.setAttribute('aria-label', 'Toggle theme');
+            themeToggle.innerHTML = this.theme === 'dark' ? '☀️' : '🌙';
+            
+            themeToggle.addEventListener('click', () => {
+                this.toggleTheme();
+            });
+            
+            navbar.appendChild(themeToggle);
+        }
+    }
+
+    applyTheme(theme) {
+        this.theme = theme;
+        
+        if (theme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        
+        // Update toggle button icon
+        const toggleButton = document.querySelector('.theme-toggle');
+        if (toggleButton) {
+            toggleButton.innerHTML = theme === 'dark' ? '☀️' : '🌙';
+        }
+        
+        // Save to localStorage
+        localStorage.setItem('theme', theme);
+    }
+
+    toggleTheme() {
+        const newTheme = this.theme === 'dark' ? 'light' : 'dark';
+        this.applyTheme(newTheme);
+    }
+}
+
+// Initialize theme manager
+document.addEventListener('DOMContentLoaded', () => {
+    new ThemeManager();
+});
+
 // Smooth scrolling for navigation links (excluding dropdown triggers and empty hashes)
 document.querySelectorAll('a[href^="#"]:not(.dropdown-trigger)').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

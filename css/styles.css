@@ -5,15 +5,47 @@
     box-sizing: border-box;
 } */
 
+/* Theme Variables */
 :root {
+    /* Day Theme (Default) */
+    --primary-color: #ffffff;
+    --secondary-color: #4A6FFF;
+    --accent-color: #8a2be2;
+    --text-color: #333333;
+    --text-secondary: #666666;
+    --dark-bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --gradient: linear-gradient(135deg, #4A6FFF, #8A2BE2);
+    --navbar-bg: #ffffff;
+    --navbar-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    --border-color: #e0e0e0;
+    --hover-bg: #f5f5f5;
+    --input-bg: #ffffff;
+    --input-border: #ddd;
+    --sidebar-bg: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    --sidebar-text: #495057;
+    --sidebar-border: rgba(0, 0, 0, 0.1);
+}
+
+/* Night Theme */
+[data-theme="dark"] {
     --primary-color: #000000;
     --secondary-color: #4A6FFF;
     --accent-color: #8a2be2;
     --text-color: #FFFFFF;
+    --text-secondary: #e8e8ff;
     --dark-bg: #0F0F17;
     --card-bg: #13071f;
     --gradient: linear-gradient(135deg, #4A6FFF, #8A2BE2);
-    --text-secondary: #e8e8ff;
+    --navbar-bg: #000000;
+    --navbar-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+    --border-color: #333333;
+    --hover-bg: #1a1a1a;
+    --input-bg: #1a1a1a;
+    --input-border: #333;
+    --sidebar-bg: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    --sidebar-text: #b8c5d6;
+    --sidebar-border: rgba(74, 158, 255, 0.2);
 }
 
 body {
@@ -35,9 +67,10 @@ body {
     top: 0;
     left: 0;
     width: 100%;
-    background-color: var(--primary-color);
+    background-color: var(--navbar-bg);
+    box-shadow: var(--navbar-shadow);
     z-index: 1000;
-    /* box-shadow: 0 1px 2px rgb(255, 0, 0); */
+    transition: all 0.3s ease;
 }
 
 .navbar .container {
@@ -82,7 +115,7 @@ body {
 
 .nav-links a {
     text-decoration: none;
-    color: #ffffff;
+    color: var(--text-color);
     font-weight: 500;
     position: relative;
     padding: 5px 0;
@@ -106,6 +139,33 @@ body {
 
 .nav-links a:hover::after {
     width: 100%;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    background: none;
+    border: 2px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    margin-left: 1rem;
+    color: var(--text-color);
+    font-size: 1.2rem;
+}
+
+.theme-toggle:hover {
+    background-color: var(--secondary-color);
+    color: white;
+    transform: scale(1.1);
+}
+
+.theme-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Buttons */
