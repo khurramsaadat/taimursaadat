@@ -142,15 +142,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Mobile-only dropdown functionality
+    // Mobile-only dropdown functionality - DISABLED for always visible courses
+    // Courses dropdown is now always expanded on mobile without accordion
     if (window.innerWidth <= 768) {
         dropdowns.forEach(dropdown => {
             const trigger = dropdown.querySelector('.dropdown-trigger');
             
             if (trigger) {
+                // Disable accordion behavior - links are always visible
                 trigger.addEventListener('click', (e) => {
                     e.preventDefault();
-                    dropdown.classList.toggle('active');
+                    // Do nothing - dropdown stays open
                 });
             }
         });
@@ -298,33 +300,36 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Dropdown functionality
-    const dropdowns = document.querySelectorAll('.dropdown');
+    const dropdownsForDesktop = document.querySelectorAll('.dropdown');
     
-    dropdowns.forEach(dropdown => {
+    dropdownsForDesktop.forEach(dropdown => {
         const trigger = dropdown.querySelector('.dropdown-trigger');
         const content = dropdown.querySelector('.dropdown-content');
         const links = dropdown.querySelectorAll('.dropdown-link');
 
-        // Handle dropdown trigger click
-        trigger.addEventListener('click', function(e) {
-            e.preventDefault(); // Prevent default anchor behavior
-            dropdown.classList.toggle('active');
-        });
-
-        // Handle dropdown links
-        links.forEach(link => {
-            link.addEventListener('click', function(e) {
-                // Don't prevent default here to allow navigation
-                dropdown.classList.remove('active');
+        // Only enable accordion on desktop (> 768px)
+        if (window.innerWidth > 768) {
+            // Handle dropdown trigger click
+            trigger.addEventListener('click', function(e) {
+                e.preventDefault(); // Prevent default anchor behavior
+                dropdown.classList.toggle('active');
             });
-        });
 
-        // Close dropdown when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!dropdown.contains(e.target)) {
-                dropdown.classList.remove('active');
-            }
-        });
+            // Handle dropdown links
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // Don't prevent default here to allow navigation
+                    dropdown.classList.remove('active');
+                });
+            });
+
+            // Close dropdown when clicking outside
+            document.addEventListener('click', function(e) {
+                if (!dropdown.contains(e.target)) {
+                    dropdown.classList.remove('active');
+                }
+            });
+        }
     });
 });
 

@@ -837,43 +837,43 @@ footer {
     }
 
     .nav-links {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100vw;
-        height: 100vh;
-        background: var(--primary-color);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background: var(--primary-color) !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
         transform: translateX(-100%);
-        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-        z-index: 1000;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        padding: 2rem;
-        box-shadow: 0 0 50px rgba(0, 0, 0, 0.3);
+        transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55) !important;
+        z-index: 1000 !important;
+        flex-direction: column !important;
+        justify-content: flex-start !important; /* Align items to top */
+        align-items: flex-start !important; /* Left align container */
+        padding: 6rem 0 2rem 3rem !important; /* Top padding for close button and theme toggle, left padding for alignment */
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.3) !important;
+        overflow-y: auto !important; /* Allow scrolling if needed */
     }
 
     .nav-links.active {
-        transform: translateX(0);
+        transform: translateX(0) !important;
     }
 
     .nav-links a {
-        padding: 1.5rem 2rem;
-        margin: 0.5rem 0;
-        font-size: 1.2rem;
-        font-weight: 500;
-        color: var(--mobile-menu-text);
-        text-decoration: none;
-        border-radius: 10px;
-        transition: all 0.3s ease;
+        padding: 0.8rem 0 !important;
+        margin: 0.3rem 0 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
+        color: var(--mobile-menu-text) !important;
+        text-decoration: none !important;
+        transition: all 0.3s ease !important;
         opacity: 0;
         transform: translateY(30px);
         animation: slideInUp 0.6s ease forwards;
-        width: 80%;
-        text-align: center;
-        border: 2px solid transparent;
+        width: auto !important; /* Allow natural width */
+        text-align: left !important; /* Left align all links */
+        display: block !important;
     }
 
     .nav-links a:nth-child(1) { animation-delay: 0.1s; }
@@ -884,11 +884,8 @@ footer {
     .nav-links a:nth-child(6) { animation-delay: 0.6s; }
 
     .nav-links a:hover {
-        background: var(--secondary-color);
-        color: white;
-        transform: translateY(-2px);
-        box-shadow: 0 10px 20px rgba(74, 111, 255, 0.3);
-        border-color: var(--accent-color);
+        color: var(--secondary-color);
+        transform: translateX(5px);
     }
 
     @keyframes slideInUp {
@@ -1209,80 +1206,76 @@ h2 {
 
 /* Mobile Navigation - Consolidated */
 @media screen and (max-width: 768px) {
-    /* Dropdown styling for mobile */
+    /* Position theme toggle in top right corner */
+    .nav-links .theme-toggle {
+        position: fixed !important;
+        top: 1.5rem;
+        right: 1.5rem;
+        z-index: 1003;
+        width: 50px;
+        height: 50px;
+        font-size: 1.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Dropdown styling for mobile - always expanded, no accordion */
     .dropdown {
-        width: 80%;
-        text-align: center;
+        width: 100%;
+        text-align: left;
         margin: 0.5rem 0;
     }
 
     .dropdown-trigger {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.5rem;
-    }
-
-    .dropdown-content {
-        position: static;
-        display: none;
-        background: rgba(74, 111, 255, 0.1);
-        border-radius: 10px;
-        margin-top: 0.5rem;
-        padding: 0.5rem 0;
-        box-shadow: inset 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-        animation: fadeInDown 0.3s ease;
-    }
-
-    .dropdown-content a {
-        padding: 1rem 2rem;
-        font-size: 1rem;
-        opacity: 0.9;
+        display: block !important;
+        pointer-events: none !important; /* Disable clicking */
+        cursor: default !important;
+        padding: 0.8rem 0 !important;
+        margin: 0.3rem 0 !important;
+        font-size: 1.1rem !important;
+        font-weight: 500 !important;
         color: var(--mobile-menu-text) !important;
+        text-align: left !important;
+        width: auto !important;
+        justify-content: flex-start !important;
+        align-items: flex-start !important;
     }
 
-    @keyframes fadeInDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    .dropdown-trigger {
-        width: 100%;
-        padding: 15px 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    /* Hide the chevron icon in mobile */
+    .dropdown-trigger i {
+        display: none !important;
     }
 
     .dropdown-content {
-        position: static;
-        display: block;
-        background: transparent;
-        box-shadow: none;
-        padding: 0;
-        opacity: 1;
-        visibility: visible;
-        transform: none;
+        position: static !important;
+        display: block !important;
+        background: transparent !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+        opacity: 1 !important;
+        visibility: visible !important;
+        transform: none !important;
+        margin: 0 !important;
     }
 
+    /* Indent course links to show they are subcategories - matching reference image */
     .dropdown-content a {
-        padding: 12px 0;
-        color: var(--text-color);
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        font-size: 0.9em;
-        padding-left: 20px;
+        padding: 0.8rem 0 0.8rem 3.5rem !important; /* 3.5rem left padding for clear indentation */
+        font-size: 1.05rem;
+        opacity: 1;
+        color: var(--mobile-menu-text) !important;
+        margin: 0.3rem 0;
+        transition: all 0.3s ease;
+        width: auto;
+        text-align: left;
+        display: block;
+        font-weight: 400; /* Slightly lighter weight for sub-items */
     }
 
     .dropdown-content a:hover {
-        background: rgba(255, 255, 255, 0.05);
+        color: var(--secondary-color);
+        transform: translateX(5px);
     }
 }
 
@@ -1308,7 +1301,18 @@ h2 {
     transform-origin: center;
 }
 
-/* Burger menu animation states */
+/* Burger menu animation states - transforms to X when active */
+.burger-menu.active {
+    position: fixed;
+    top: 1.5rem;
+    left: 1.5rem;
+    z-index: 1003;
+}
+
+.burger-menu.active span {
+    background-color: var(--mobile-menu-text);
+}
+
 .burger-menu.active span:nth-child(1) {
     transform: rotate(45deg) translate(8px, 8px);
 }
@@ -1590,20 +1594,7 @@ h2 {
     color: var(--secondary-color);
 }
 
-/* Mobile styles */
-@media screen and (max-width: 768px) {
-    .dropdown-content {
-        position: static;
-        display: none;
-        background-color: rgba(74, 111, 255, 0.1);
-        box-shadow: none;
-        padding: 0;
-    }
-
-    .dropdown.active .dropdown-content {
-        display: block;
-    }
-}
+/* Mobile styles - Removed: dropdown content is now always visible (handled in consolidated mobile navigation section above) */
 
 /* Course Page Specific Styles */
 .course-hero {
@@ -1777,17 +1768,7 @@ h2 {
         width: 100%;
     }
 
-    .dropdown-content {
-        position: static;
-        width: 100%;
-        display: none;
-        padding-left: 1rem;
-        background: rgba(18, 18, 37, 0.9);
-    }
-
-    .dropdown-content a {
-        padding: 0.5rem 1rem;
-    }
+    /* Dropdown content styling removed - handled in consolidated mobile navigation section above */
 }
 
 /* Course Structure Grid */
