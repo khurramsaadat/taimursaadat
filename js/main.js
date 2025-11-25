@@ -114,9 +114,13 @@ document.addEventListener('DOMContentLoaded', function() {
             title: 'Event Management Study',
             path: 'assets/pdf/Event management.pdf'
         },
-        'Manuka_Honey': {
+        'MK_Study': {
             title: 'Manuka Honey Study',
-            path: 'assets/pdf/Manuka Honey.pdf'
+            path: 'assets/pdf/MK_rev2.pdf'
+        },
+        'Digital_Signage': {
+            title: 'Digital Signage',
+            path: 'assets/pdf/Digital Signage.pdf'
         }
     };
 
