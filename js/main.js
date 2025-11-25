@@ -1,10 +1,21 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+// Smooth scrolling for navigation links (excluding dropdown triggers and empty hashes)
+document.querySelectorAll('a[href^="#"]:not(.dropdown-trigger)').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const href = this.getAttribute('href');
+        if (href !== '#' && href.length > 1) {
+            try {
+                const target = document.querySelector(href);
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            } catch (error) {
+                // Invalid selector, ignore
+                console.warn('Invalid selector:', href);
+            }
+        }
     });
 });
 
