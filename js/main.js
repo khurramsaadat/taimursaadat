@@ -118,11 +118,28 @@ document.addEventListener('DOMContentLoaded', () => {
     const burger = document.querySelector('.burger-menu');
     const nav = document.querySelector('.nav-links');
     const dropdowns = document.querySelectorAll('.dropdown');
+    const body = document.body;
     
-    // Burger menu toggle
-    burger.addEventListener('click', () => {
+    // Burger menu toggle with enhanced animation
+    burger.addEventListener('click', (e) => {
+        e.stopPropagation();
         nav.classList.toggle('active');
         burger.classList.toggle('active');
+        
+        // Prevent body scroll when menu is open
+        if (nav.classList.contains('active')) {
+            body.style.overflow = 'hidden';
+            // Reset animation for links
+            const links = nav.querySelectorAll('a');
+            links.forEach((link, index) => {
+                link.style.animation = 'none';
+                link.offsetHeight; // Trigger reflow
+                link.style.animation = `slideInUp 0.6s ease forwards`;
+                link.style.animationDelay = `${(index + 1) * 0.1}s`;
+            });
+        } else {
+            body.style.overflow = '';
+        }
     });
 
     // Mobile-only dropdown functionality
@@ -139,15 +156,35 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Close menu when clicking outside
+    // Close menu when clicking outside or on a link
     document.addEventListener('click', (e) => {
         if (!nav.contains(e.target) && !burger.contains(e.target)) {
-            nav.classList.remove('active');
-            burger.classList.remove('active');
-            // Close dropdowns if open
-            dropdowns.forEach(dropdown => {
-                dropdown.classList.remove('active');
-            });
+            closeMenu();
+        }
+    });
+
+    // Close menu when clicking on navigation links (except dropdowns)
+    nav.addEventListener('click', (e) => {
+        if (e.target.tagName === 'A' && !e.target.classList.contains('dropdown-trigger')) {
+            closeMenu();
+        }
+    });
+
+    // Function to close menu with cleanup
+    function closeMenu() {
+        nav.classList.remove('active');
+        burger.classList.remove('active');
+        body.style.overflow = '';
+        // Close dropdowns if open
+        dropdowns.forEach(dropdown => {
+            dropdown.classList.remove('active');
+        });
+    }
+
+    // Handle escape key to close menu
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && nav.classList.contains('active')) {
+            closeMenu();
         }
     });
 });
