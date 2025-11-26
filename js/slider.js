@@ -3,7 +3,15 @@ document.addEventListener('DOMContentLoaded', function() {
     const dots = document.querySelectorAll('.nav-dot');
     const prevArrow = document.querySelector('.slider-arrow.prev');
     const nextArrow = document.querySelector('.slider-arrow.next');
+    const heroSlider = document.querySelector('.hero-slider');
     let currentSlide = 0;
+    
+    // Touch swipe variables
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    const minSwipeDistance = 50; // Minimum distance for a swipe
 
     // Function to show a specific slide
     function showSlide(index) {
@@ -36,9 +44,44 @@ document.addEventListener('DOMContentLoaded', function() {
         showSlide(currentSlide);
     }
 
+    // Handle swipe gesture
+    function handleSwipe() {
+        const horizontalDistance = touchEndX - touchStartX;
+        const verticalDistance = Math.abs(touchEndY - touchStartY);
+        
+        // Only process horizontal swipes (not vertical scrolling)
+        if (Math.abs(horizontalDistance) > minSwipeDistance && Math.abs(horizontalDistance) > verticalDistance) {
+            if (horizontalDistance > 0) {
+                // Swipe right - go to previous slide
+                prevSlide();
+            } else {
+                // Swipe left - go to next slide
+                nextSlide();
+            }
+        }
+    }
+
+    // Touch event listeners for swipe gestures
+    if (heroSlider) {
+        heroSlider.addEventListener('touchstart', function(e) {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, { passive: true });
+
+        heroSlider.addEventListener('touchend', function(e) {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, { passive: true });
+    }
+
     // Add click events to arrows
-    prevArrow.addEventListener('click', prevSlide);
-    nextArrow.addEventListener('click', nextSlide);
+    if (prevArrow) {
+        prevArrow.addEventListener('click', prevSlide);
+    }
+    if (nextArrow) {
+        nextArrow.addEventListener('click', nextSlide);
+    }
 
     // Add click events to dots
     dots.forEach((dot, index) => {
